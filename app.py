@@ -80,7 +80,7 @@ if choice == "Modelling":
             pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
             setup_df = pycaret.regression.pull()
             st.dataframe(setup_df,width=10, height=12)
-            best_model = pycaret.regression.compare_models()
+            best_model = pycaret.regression.compare_models(n_select = 3)
             compare_df = pycaret.regression.pull()
             st.dataframe(compare_df,width=10, height=12)
             pycaret.regression.save_model(best_model, 'best_model')
@@ -97,11 +97,19 @@ if choice == "Modelling":
         if st.button('Run Modelling'):
             pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
             setup_df = pycaret.classification.pull()
-            st.dataframe(setup_df)
-            best_model = pycaret.classification.compare_models()
+            st.dataframe(setup_df,width=10, height=12)
+            best_model = pycaret.classification.compare_models(n_select = 3)
             compare_df = pycaret.classification.pull()
-            st.dataframe(compare_df)
+            st.dataframe(compare_df,width=10, height=12)
             pycaret.classification.save_model(best_model, 'best_model')
+            st.subheader("Analyzing the performance of your trained model on holdout set")
+            st.write("Please select your desired plot")
+            plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
+            pycaret.classification.plot_model(plot=plot_choice)
+            st.subheader("Interpreting built ML Model")
+            st.write("Please select your desired summary")
+            interpret_choice = st.radio('**Available plots**',['summary','correlation','reason'])
+            pycaret.classification.interpret_model(plot=interpret_choice)
 
         # Classification Work Ends
 
