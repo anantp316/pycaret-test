@@ -105,11 +105,11 @@ if choice == "Modelling":
             st.subheader("Analyzing the performance of your trained model on holdout set")
             st.write("Please select your desired plot")
             plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
-            pycaret.classification.plot_model(estimator,plot=plot_choice)
+            pycaret.classification.plot_model(estimator=best_model,plot=plot_choice)
             st.subheader("Interpreting built ML Model")
             st.write("Please select your desired summary")
             interpret_choice = st.radio('**Available plots**',['summary','correlation','reason'])
-            pycaret.classification.interpret_model(estimator,plot=interpret_choice)
+            pycaret.classification.interpret_model(estimator=best_model,plot=interpret_choice)
 
         # Classification Work Ends
 
