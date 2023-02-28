@@ -9,7 +9,7 @@ scipy<2.0.0  # Can't >=2.0.0 due to sktime
 joblib>=1.2.0  # joblib<1.2.0 is vulnerable to Arbitrary Code Execution (https://github.com/advisories/GHSA-6hrg-qmvc-2xh8)
 scikit-learn==0.23.2
 pyod==1.0.0
-imbalanced-learn>=0.8.0
+imbalanced-learn==0.7.0
 category-encoders>=2.4.0
 lightgbm>=3.0.0
 numba>=0.55.0
