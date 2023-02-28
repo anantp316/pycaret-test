@@ -108,16 +108,16 @@ if choice == "Modelling":
             pycaret.classification.plot_model(estimator=best_clf,plot='auc',display_format = 'streamlit')
             st.subheader("Model Decision Boundary")
             pycaret.classification.plot_model(estimator=best_clf,plot='boundary',display_format = 'streamlit')
-            st.subheader("Feature Importance")
-            pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
+            #st.subheader("Feature Importance")
+            #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model")
             st.subheader("Summary plot using SHAP values")
             #interpret_choice = st.radio('**Available plots**',['summary','correlation','reason'])
-            st.pyplot(pycaret.classification.interpret_model(estimator=best_model,plot='summary'))
+            pycaret.classification.interpret_model(estimator=best_model,plot='summary')
             st.subheader("Dependency Plot")
-            st.pyplot(pycaret.classification.interpret_model(estimator=best_model,plot='correlation'))
+            pycaret.classification.interpret_model(estimator=best_model,plot='correlation')
             st.subheader("Force plot using SHAP values")
-            st.pyplot(pycaret.classification.interpret_model(estimator=best_model,plot='reason'))
+            pycaret.classification.interpret_model(estimator=best_model,plot='reason')
         # Classification Work Ends
 
 
