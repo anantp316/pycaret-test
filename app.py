@@ -95,7 +95,7 @@ if choice == "Modelling":
             st.title("Interpreting built ML Model using Feature Importance")
             pycaret.regression.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
             st.title("Interactive Dashboard")
-            pycaret.regression.dashboard(best_reg)
+            pycaret.regression.dashboard(best_reg,display_format='inline')
             
 
 
@@ -133,7 +133,7 @@ if choice == "Modelling":
             #st.subheader("Force plot using SHAP values")
             #pycaret.classification.interpret_model(estimator=best_model,plot='reason',display_format = 'streamlit')
             st.title("Interactive Dashboard")
-            pycaret.classification.dashboard(best_clf)
+            pycaret.classification.dashboard(best_clf,display_format='inline')
         # Classification Work Ends
 
 
