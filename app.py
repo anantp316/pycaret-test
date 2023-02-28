@@ -94,8 +94,9 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model using Feature Importance")
             pycaret.regression.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
-            st.title("Interactive Dashboard")
-            pycaret.regression.dashboard(best_reg,display_format='inline')
+            st.title("Comprehensive Model Evaluation")
+            pycaret.regression.evaluate_model(best_reg,use_train_data=True)
+            #pycaret.regression.dashboard(best_reg,display_format='inline')
             
 
 
@@ -132,8 +133,9 @@ if choice == "Modelling":
             #pycaret.classification.interpret_model(estimator=best_model,plot='correlation',display_format = 'streamlit')
             #st.subheader("Force plot using SHAP values")
             #pycaret.classification.interpret_model(estimator=best_model,plot='reason',display_format = 'streamlit')
-            st.title("Interactive Dashboard")
-            pycaret.classification.dashboard(best_clf,display_format='inline')
+            st.title("Comprehensive Model Evaluation")
+            #pycaret.classification.dashboard(best_clf,display_format='inline')
+            pycaret.classification.evaluate_model(best_clf,use_train_data=True)
         # Classification Work Ends
 
 
@@ -161,6 +163,9 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model using Silhouette Plot")
             pycaret.clustering.plot_model(estimator=best_clus,plot='silhouette',display_format = 'streamlit')
+            st.title("Comprehensive Model Evaluation")
+            #pycaret.classification.dashboard(best_clf,display_format='inline')
+            pycaret.clustering.evaluate_model(best_clus,use_train_data=True)
 
 
 if choice == "Download":
