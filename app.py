@@ -99,7 +99,8 @@ if choice == "Modelling":
             st.dataframe(setup_df)
             best_model = pycaret.classification.compare_models()
             compare_df = pycaret.classification.pull()
-
+            st.dataframe(compare_df)
+            pycaret.classification.save_model(best_model, 'best_model')
 
         # Classification Work Ends
 
@@ -115,7 +116,8 @@ if choice == "Modelling":
             st.dataframe(setup_df)
             best_model = pycaret.clustering.compare_models()
             compare_df = pycaret.clustering.pull()
-
+            st.dataframe(compare_df)
+            pycaret.clustering.save_model(best_model, 'best_model')
 
 
 if choice == "Download":
