@@ -87,13 +87,15 @@ if choice == "Modelling":
             st.title("Analyzing the performance of your trained model on holdout set")
             st.subheader("Model Residual")
             #plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
-            pycaret.classification.plot_model(estimator=best_reg,plot='residual',display_format = 'streamlit')
+            pycaret.regression.plot_model(estimator=best_reg,plot='residual',display_format = 'streamlit')
             st.subheader("Model Prediction Error Plot")
-            pycaret.classification.plot_model(estimator=best_reg,plot='error',display_format = 'streamlit')
+            pycaret.regression.plot_model(estimator=best_reg,plot='error',display_format = 'streamlit')
             #st.subheader("Feature Importance")
             #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model using Feature Importance")
-            pycaret.classification.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
+            pycaret.regression.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
+            st.title("Interactive Dashboard")
+            dashboard(best_reg)
             
 
 
@@ -130,6 +132,8 @@ if choice == "Modelling":
             #pycaret.classification.interpret_model(estimator=best_model,plot='correlation',display_format = 'streamlit')
             #st.subheader("Force plot using SHAP values")
             #pycaret.classification.interpret_model(estimator=best_model,plot='reason',display_format = 'streamlit')
+            st.title("Interactive Dashboard")
+            dashboard(best_clf)
         # Classification Work Ends
 
 
@@ -146,6 +150,17 @@ if choice == "Modelling":
             compare_df = pycaret.clustering.pull()
             st.dataframe(compare_df)
             pycaret.clustering.save_model(best_model, 'best_model')
+            best_clus = pycaret.clustering.create_model(best_model)
+            st.title("Analyzing the performance of your trained model on holdout set")
+            st.subheader("Cluster PCA Plot")
+            #plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
+            pycaret.clustering.plot_model(estimator=best_clus,plot='cluster',display_format = 'streamlit')
+            st.subheader("Cluster TsNE Plot")
+            pycaret.clustering.plot_model(estimator=best_clus,plot='tsne',display_format = 'streamlit')
+            #st.subheader("Feature Importance")
+            #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
+            st.title("Interpreting built ML Model using Silhouette Plot")
+            pycaret.clustering.plot_model(estimator=best_clus,plot='silhouette',display_format = 'streamlit')
 
 
 if choice == "Download":
