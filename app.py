@@ -76,7 +76,6 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-
             pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
             setup_df = pycaret.regression.pull()
             st.dataframe(setup_df,width=10, height=12)
@@ -98,7 +97,7 @@ if choice == "Modelling":
             pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
             setup_df = pycaret.classification.pull()
             st.dataframe(setup_df,width=10, height=12)
-            best_model = pycaret.classification.compare_models(n_select = 3)
+            best_model = pycaret.classification.compare_models()
             compare_df = pycaret.classification.pull()
             st.dataframe(compare_df,width=10, height=12)
             pycaret.classification.save_model(best_model, 'best_model')
