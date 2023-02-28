@@ -105,7 +105,7 @@ if choice == "Modelling":
             st.subheader("Model AUC")
             #plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
             fig = pycaret.classification.plot_model(estimator=best_model,plot='auc')
-            st.plotly_chart(fig)
+            st.pyplot(fig)
             #st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='auc'))
             st.subheader("Model Decision Boundary")
             st.write(pycaret.classification.plot_model(estimator=best_model,plot='boundary'))
