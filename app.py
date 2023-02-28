@@ -107,7 +107,7 @@ if choice == "Modelling":
             st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot=plot_choice))
             st.subheader("Interpreting built ML Model")
             st.write("Please select your desired summary")
-            interpret_choice = st.radio('**Available plots**',['summary','correlation','reason']))
+            interpret_choice = st.radio('**Available plots**',['summary','correlation','reason'])
             st.pyplot(pycaret.classification.interpret_model(estimator=best_model,plot=interpret_choice))
 
         # Classification Work Ends
