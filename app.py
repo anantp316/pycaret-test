@@ -78,11 +78,22 @@ if choice == "Modelling":
         if st.button('Run Modelling'):
             pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
             setup_df = pycaret.regression.pull()
-            st.dataframe(setup_df,width=10, height=12)
+            st.dataframe(setup_df)
             best_model = pycaret.regression.compare_models(n_select = 3)
             compare_df = pycaret.regression.pull()
-            st.dataframe(compare_df,width=10, height=12)
+            st.dataframe(compare_df)
             pycaret.regression.save_model(best_model, 'best_model')
+            best_reg = pycaret.classification.create_model(best_model)
+            st.title("Analyzing the performance of your trained model on holdout set")
+            st.subheader("Model Residual")
+            #plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
+            pycaret.classification.plot_model(estimator=best_reg,plot='residual',display_format = 'streamlit')
+            st.subheader("Model Prediction Error Plot")
+            pycaret.classification.plot_model(estimator=best_reg,plot='error',display_format = 'streamlit')
+            #st.subheader("Feature Importance")
+            #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
+            st.title("Interpreting built ML Model using Feature Importance")
+            pycaret.classification.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
             
 
 
