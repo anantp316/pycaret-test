@@ -108,7 +108,7 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='auc')
             
             plt.figure(figsize=(9, 4))
-            pycaret.classification.plot_model(estimator=best_clf,plot='auc')
+            fig = pycaret.classification.plot_model(estimator=best_clf,plot='auc')
             st.pyplot(plt)
             
             #st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='auc'))
