@@ -10,6 +10,7 @@ from sklearn.datasets import load_diabetes
 # Page layout
 ## Page expands to full width
 from sklearn.model_selection import train_test_split
+from explainerdashboard import ExplainerDashboard
 
 st.set_page_config(page_title='EzML',page_icon=":robot_face:",
     layout='wide')
@@ -95,8 +96,8 @@ if choice == "Modelling":
             st.title("Interpreting built ML Model using Feature Importance")
             pycaret.regression.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
             st.title("Comprehensive Model Evaluation")
-            st.write(pycaret.regression.evaluate_model(best_reg,use_train_data=True))
-            #pycaret.regression.dashboard(best_reg,display_format='inline')
+            #st.write(pycaret.regression.evaluate_model(best_reg,use_train_data=True))
+            pycaret.regression.dashboard(best_reg,display_format='dash')
             
 
 
@@ -134,8 +135,8 @@ if choice == "Modelling":
             #st.subheader("Force plot using SHAP values")
             #pycaret.classification.interpret_model(estimator=best_model,plot='reason',display_format = 'streamlit')
             st.title("Comprehensive Model Evaluation")
-            #pycaret.classification.dashboard(best_clf,display_format='inline')
-            st.write(pycaret.classification.evaluate_model(best_clf,use_train_data=True))
+            pycaret.classification.dashboard(best_clf,display_format='dash')
+            #st.write(pycaret.classification.evaluate_model(best_clf,use_train_data=True))
         # Classification Work Ends
 
 
@@ -164,8 +165,8 @@ if choice == "Modelling":
             st.title("Interpreting built ML Model using Silhouette Plot")
             pycaret.clustering.plot_model(estimator=best_clus,plot='silhouette',display_format = 'streamlit')
             st.title("Comprehensive Model Evaluation")
-            #pycaret.classification.dashboard(best_clf,display_format='inline')
-            pycaret.clustering.evaluate_model(best_clus,use_train_data=True)
+            pycaret.classification.dashboard(best_clf,display_format='dash')
+            #pycaret.clustering.evaluate_model(best_clus,use_train_data=True)
 
 
 if choice == "Download":
