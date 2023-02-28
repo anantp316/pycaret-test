@@ -107,7 +107,7 @@ if choice == "Modelling":
             pycaret.classification.plot_model(estimator=best_model,plot='auc')
             #st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='auc'))
             st.subheader("Model Decision Boundary")
-            st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='boundary'))
+            st.write(pycaret.classification.plot_model(estimator=best_model,plot='boundary'))
             st.subheader("Feature Importance")
             st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='feature_all'))
             st.title("Interpreting built ML Model")
