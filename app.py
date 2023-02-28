@@ -104,7 +104,7 @@ if choice == "Modelling":
             st.title("Analyzing the performance of your trained model on holdout set")
             st.subheader("Model AUC")
             #plot_choice = st.radio('**Available plots**',['auc','confusion_matrix','boundary','feature_all','tree'])
-            st.write(pycaret.classification.plot_model(estimator=best_model,plot='auc'))
+            pycaret.classification.plot_model(estimator=best_model,plot='auc')
             #st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='auc'))
             st.subheader("Model Decision Boundary")
             st.pyplot(pycaret.classification.plot_model(estimator=best_model,plot='boundary'))
