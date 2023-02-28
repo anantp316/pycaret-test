@@ -108,7 +108,6 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='auc')
             
             plt.figure(figsize=(9, 4))
-            sns.set_theme(style="darkgrid")
             pycaret.classification.plot_model(estimator=best_clf,plot='auc')
             st.pyplot(plt)
             
