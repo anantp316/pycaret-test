@@ -74,7 +74,7 @@ if choice == "Modelling":
             pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
             setup_df = pycaret.regression.pull()
             st.dataframe(setup_df)
-            best_model = pycaret.regression.compare_models(turbo=True)
+            best_model = pycaret.regression.compare_models(turbo=True,exclude = ['et'])
             compare_df = pycaret.regression.pull()
             st.dataframe(compare_df)
             pycaret.regression.save_model(best_model, 'best_model')
