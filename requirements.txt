@@ -28,6 +28,14 @@ Boruta
 pyyaml<6.0.0 
 numba<0.55
 
+# For dashbords
+shap
+explainerdashboard
+evidently
+autoviz
+boto3
+
+
 # Actuals
 pycaret==2.3.10
 streamlit
