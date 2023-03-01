@@ -89,8 +89,7 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model using Feature Importance")
             pycaret.regression.plot_model(estimator=best_reg,plot='feature',display_format = 'streamlit')
-            st.title("Comprehensive Model Evaluation")
-            pycaret.regression.dashboard(best_reg)
+            
             #pycaret.regression.evaluate_model(best_reg,use_train_data=True)
             #st.write(pycaret.regression.evaluate_model(best_reg,use_train_data=True))
             #pycaret.regression.dashboard(best_reg,display_format='jupyterlab')
@@ -131,11 +130,6 @@ if choice == "Modelling":
             #pycaret.classification.interpret_model(estimator=best_model,plot='correlation',display_format = 'streamlit')
             #st.subheader("Force plot using SHAP values")
             #pycaret.classification.interpret_model(estimator=best_model,plot='reason',display_format = 'streamlit')
-            st.title("Comprehensive Model Evaluation")
-            pycaret.classification.dashboard(best_clf)
-            #pycaret.classification.evaluate_model(best_reg,use_train_data=True)
-            #pycaret.classification.dashboard(best_clf,display_format='jupyterlab')
-            #pycaret.classification.dashboard(best_clf,display_format='external')
             
             #st.write(pycaret.classification.evaluate_model(best_clf,use_train_data=True))
         # Classification Work Ends
