@@ -109,7 +109,7 @@ if choice == "Modelling":
             pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
             setup_df = pycaret.classification.pull()
             st.dataframe(setup_df)
-            best_model = pycaret.classification.compare_models(turbo=True,exclude = ['knn','qda'])
+            best_model = pycaret.classification.compare_models(turbo=True,exclude = ['knn','qda','nb'])
             compare_df = pycaret.classification.pull()
             st.dataframe(compare_df)
             pycaret.classification.save_model(best_model, 'best_model')
