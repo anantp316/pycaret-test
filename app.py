@@ -140,7 +140,7 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-            pycaret.clustering.setup(df, target=chosen_target, silent=True)
+            pycaret.clustering.setup(df, silent=True)
             setup_df = pycaret.clustering.pull()
             st.dataframe(setup_df)
             best_model = pycaret.clustering.compare_models()
