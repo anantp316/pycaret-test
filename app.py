@@ -159,9 +159,7 @@ if choice == "Modelling":
             #pycaret.classification.plot_model(estimator=best_clf,plot='feature_all',display_format = 'streamlit')
             st.title("Interpreting built ML Model using Silhouette Plot")
             pycaret.clustering.plot_model(model=best_clus,plot='silhouette',display_format = 'streamlit')
-            st.title("Comprehensive Model Evaluation")
-            pycaret.clustering.dashboard(best_clus,display_format='dash')
-            #pycaret.clustering.evaluate_model(best_clus,use_train_data=True)
+            
 
 
 if choice == "Download":
