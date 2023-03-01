@@ -10,7 +10,7 @@ from sklearn.datasets import load_diabetes
 # Page layout
 ## Page expands to full width
 from sklearn.model_selection import train_test_split
-from explainerdashboard import ClassifierExplainer, ExplainerDashboard, RegressorExplainer
+#from explainerdashboard import ClassifierExplainer, ExplainerDashboard, RegressorExplainer
 
 st.set_page_config(page_title='EzML',page_icon=":robot_face:",
     layout='wide')
