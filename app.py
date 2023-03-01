@@ -143,7 +143,7 @@ if choice == "Modelling":
             pycaret.clustering.setup(df, silent=True)
             setup_df = pycaret.clustering.pull()
             st.dataframe(setup_df)
-            best_model = pycaret.clustering.compare_models()
+            #best_model = pycaret.clustering.compare_models()
             compare_df = pycaret.clustering.pull()
             st.dataframe(compare_df)
             pycaret.clustering.save_model(best_model, 'best_model')
