@@ -30,10 +30,6 @@ numba<0.55
 
 # For dashbords
 
-explainerdashboard
-evidently
-autoviz
-
 
 
 # Actuals
