@@ -37,15 +37,10 @@ st.write("""
 with st.sidebar:
     choice = st.radio("Navigation", ["Upload","Modelling", "Download"])
 
-with st.sidebar.header('1. Upload your CSV data'):
-    uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
-
-
 # Sidebar - Specify parameter settings
-with st.sidebar.header('2. Set Parameters'):
+with st.sidebar.header('Set Parameters'):
     split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 0.1, 0.9, 0.8, 0.1)
-    #seed_number = st.sidebar.slider('Set the random seed number', 1, 100, 42, 1)
-
+   
 
 #---------------------------------#
 #---------------------------------#
