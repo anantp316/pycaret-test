@@ -35,7 +35,7 @@ st.write("""
 #---------------------------------#
 # Sidebar - Collects user input features into dataframe
 with st.sidebar:
-    choice = st.radio("Navigation", ["Upload","Profiling","Modelling", "Download"])
+    choice = st.radio("Navigation", ["Upload","Modelling", "Download"])
 
 with st.sidebar.header('1. Upload your CSV data'):
     uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
@@ -43,8 +43,8 @@ with st.sidebar.header('1. Upload your CSV data'):
 
 # Sidebar - Specify parameter settings
 with st.sidebar.header('2. Set Parameters'):
-    split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 10, 90, 80, 5)
-    seed_number = st.sidebar.slider('Set the random seed number', 1, 100, 42, 1)
+    split_size = st.sidebar.slider('Data split ratio (% for Training Set)', 0.1, 0.9, 0.8, 0.1)
+    #seed_number = st.sidebar.slider('Set the random seed number', 1, 100, 42, 1)
 
 
 #---------------------------------#
@@ -63,12 +63,6 @@ if choice == "Upload":
         df.to_csv('dataset.csv', index=None)
         st.dataframe(df)
 
-if choice == "Profiling":
-    st.title("Exploratory Data Analysis")
-    df.head()
-    #profile_df = df.profile_report()
-    #st_profile_report(profile_df)
-
 
 if choice == "Modelling":
     choice = st.radio('**Select your task**',['Regression','Classification','Clustering'])
@@ -77,7 +71,7 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-            pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
+            pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
             setup_df = pycaret.regression.pull()
             st.dataframe(setup_df)
             best_model = pycaret.regression.compare_models(n_select = 3)
@@ -109,7 +103,7 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-            pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=0.8,fold = 3)
+            pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
             setup_df = pycaret.classification.pull()
             st.dataframe(setup_df)
             best_model = pycaret.classification.compare_models()
