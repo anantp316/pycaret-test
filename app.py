@@ -66,7 +66,7 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-            pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
+            pycaret.regression.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 2)
             setup_df = pycaret.regression.pull()
             st.dataframe(setup_df)
             best_model = pycaret.regression.compare_models(turbo=True,exclude = ['et'])
@@ -100,7 +100,7 @@ if choice == "Modelling":
         # Regression Work Starts
         chosen_target = st.selectbox('Choose the Target Column', df.columns)
         if st.button('Run Modelling'):
-            pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 3)
+            pycaret.classification.setup(df, target=chosen_target, silent=True,train_size=split_size,fold = 2)
             setup_df = pycaret.classification.pull()
             st.dataframe(setup_df)
             best_model = pycaret.classification.compare_models(turbo=True,exclude = ['knn','qda','nb'])
